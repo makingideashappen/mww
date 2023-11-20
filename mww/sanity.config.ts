@@ -8,7 +8,6 @@ import {schemaTypes} from './schemas'
 export default defineConfig({
   name: 'default',
   title: 'mww',
-
   projectId: 'z8x15pky',
   dataset: 'production',
 
