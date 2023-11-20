@@ -1,0 +1,542 @@
+backend:
+  name: git-gateway
+  branch: develop
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "Slider"
+    label: "Slider"
+    folder: "src/content/slider/"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "slider-posts",
+        }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - {
+          label: "subtitle",
+          name: "subtitle",
+          widget: "string",
+          required: true,
+        }
+      - {
+          label: "description",
+          name: "description",
+          widget: "markdown",
+          required: true,
+        }
+      - { label: "link", name: "link", widget: "string" }
+      - {
+          label: "Featured Image",
+          name: "featuredImage",
+          widget: image,
+          required: true,
+        }
+  - name: "Features"
+    label: "Features (LEFT/RIGHT homepage sections)"
+    folder: "src/content/features/"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "features",
+        }
+      - {
+          label: "description",
+          name: "description",
+          widget: "markdown",
+          required: true,
+        }
+      - {
+          label: "Featured Image",
+          name: "featuredImage",
+          widget: image,
+          required: true,
+        }
+  - name: "News"
+    label: "News (BLOG POSTS)"
+    folder: "src/content/news/"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "news-post",
+        }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Place", name: "place", widget: "string", required: true }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          required: true,
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "text",
+          required: true,
+        }
+      - {
+          label: "Featured Image",
+          name: "featuredImage",
+          widget: image,
+          required: true,
+        }
+      - label: "Gallery"
+        name: "galleryImages"
+        widget: "list"
+        summary: "{{fields.image}}"
+        field: { label: Image, name: image, widget: image, required: true }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "list",
+          required: true,
+          allow_add: false,
+        }
+  - name: "products"
+    label: "Products"
+    folder: "src/content/products/"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "product-post",
+          ecg,
+        }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - {
+          label: "Product name",
+          name: "ProductName",
+          widget: "string",
+          required: true,
+        }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          required: true,
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "text",
+          required: true,
+        }
+      - {
+          label: "Featured Image",
+          name: "featuredImage",
+          widget: image,
+          required: true,
+        }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
+      - label: "Gallery"
+        name: "galleryImages"
+        widget: "list"
+        summary: "{{fields.image}}"
+        field: { label: Image, name: image, widget: image, required: true }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "select",
+          required: true,
+          options:
+            [
+              "Aluminium Doors",
+              "Aluminium Windows",
+              "Steel Doors",
+              "Steel Windows",
+              "Glass Roof",
+            ],
+        }
+  - name: "techInfo"
+    label: "Tech Info"
+    folder: "src/content/techInfo/"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "tech-detail-post",
+        }
+      - { label: "Heading", name: "heading", widget: "string", required: true }
+      - {
+          label: "Subheading",
+          name: "subheading",
+          widget: "string",
+          required: true,
+        }
+      - { label: "Message", name: "message", widget: "string", required: true }
+      - label: "Tech Info Item"
+        name: "cards"
+        widget: "list"
+        allow_add: true
+        fields:
+          - { label: Header, name: header, widget: string }
+          - { label: Description, name: description, widget: text }
+          - { label: "Image", name: "Image", widget: "image", required: true }
+          - { label: "File", name: "File", widget: "file", required: true }
+  - label: "Pages translations"
+    name: "pages"
+    files:
+      - label: "Home page (English)"
+        name: "home_en"
+        file: "src/i18n/translations/en/home.json"
+        extension: "json"
+        fields:
+          - {
+              label: "hero_button_message",
+              name: "hero_button_message",
+              widget: "string",
+            }
+          - {
+              label: "homeAbout_title_html",
+              name: "homeAbout_title_html",
+              widget: "markdown",
+            }
+          - {
+              label: "homeAbout_message",
+              name: "homeAbout_message",
+              widget: "string",
+            }
+          - {
+              label: "homeAbout2_title",
+              name: "homeAbout2_title",
+              widget: "string",
+            }
+          - {
+              label: "homeAbout2_subtitle_html",
+              name: "homeAbout2_subtitle_html",
+              widget: "markdown",
+            }
+          - {
+              label: "homeAbout2_description_html",
+              name: "homeAbout2_description_html",
+              widget: "markdown",
+            }
+          - {
+              label: "homeAbout2_button_products_message",
+              name: "homeAbout2_button_products_message",
+              widget: "string",
+            }
+          - {
+              label: "homeAbout2_button_tech_info_message",
+              name: "homeAbout2_button_tech_info_message",
+              widget: "string",
+            }
+          - {
+              label: "testimonials_title",
+              name: "testimonials_title",
+              widget: "string",
+            }
+          - {
+              label: "testimonials_message1",
+              name: "testimonials_message1",
+              widget: "markdown",
+            }
+          - {
+              label: "testimonials_subtitle1",
+              name: "testimonials_subtitle1",
+              widget: "string",
+            }
+          - {
+              label: "testimonials_message2",
+              name: "testimonials_message2",
+              widget: "markdown",
+            }
+          - {
+              label: "testimonials_subtitle2",
+              name: "testimonials_subtitle2",
+              widget: "string",
+            }
+          - {
+              label: "testimonials_message3",
+              name: "testimonials_message3",
+              widget: "string",
+            }
+          - {
+              label: "testimonials_subtitle3",
+              name: "testimonials_subtitle3",
+              widget: "markdown",
+            }
+          - {
+              label: "getStarted_message",
+              name: "getStarted_message",
+              widget: "markdown",
+            }
+          - {
+              label: "getStarted_secondaryLinkText",
+              name: "getStarted_secondaryLinkText",
+              widget: "string",
+            }
+          - {
+              label: "getStarted_btn_news_msg",
+              name: "getStarted_btn_news_msg",
+              widget: "string",
+            }
+          - {
+              label: "getStarted_btn_about_msg",
+              name: "getStarted_btn_about_msg",
+              widget: "string",
+            }
+      - label: "About (English)"
+        name: "about_en"
+        file: "src/i18n/translations/en/about.json"
+        extension: "json"
+        fields:
+          - { label: "heading", name: "heading", widget: "string" }
+          # - {
+          #     label: "features_heading1",
+          #     name: "features_heading1",
+          #     widget: "string",
+          #   }
+          # - {
+          #     label: "features_description1",
+          #     name: "features_description1",
+          #     widget: "string",
+          #   }
+          # - {
+          #     label: "features_heading2",
+          #     name: "features_heading2",
+          #     widget: "string",
+          #   }
+          # - {
+          #     label: "features_description2",
+          #     name: "features_description2",
+          #     widget: "string",
+          #   }
+          # - {
+          #     label: "features_title1",
+          #     name: "features_title1",
+          #     widget: "string",
+          #   }
+          # - {
+          #     label: "features_message1",
+          #     name: "features_message1",
+          #     widget: "string",
+          #   }
+          # - {
+          #     label: "featurs_title2",
+          #     name: "featurs_title2",
+          #     widget: "string",
+          #   }
+          # - {
+          #     label: "features_message2",
+          #     name: "features_message2",
+          #     widget: "string",
+          #   }
+          # - {
+          #     label: "featurs_title3",
+          #     name: "featurs_title3",
+          #     widget: "string",
+          #   }
+          # - {
+          #     label: "features_message3",
+          #     name: "features_message3",
+          #     widget: "string",
+          #   }
+          - { label: "image_heading", name: "image_heading", widget: "string" }
+          - { label: "description", name: "description", widget: "markdown" }
+          - {
+              label: "offer_points_title",
+              name: "offer_points_title",
+              widget: "string",
+            }
+          - {
+              label: "offer_points_description",
+              name: "offer_points_description",
+              widget: "string",
+            }
+          - {
+              label: "offer_points_item1",
+              name: "offer_points_item1",
+              widget: "string",
+            }
+          - {
+              label: "offer_points_item_description1",
+              name: "offer_points_item_description1",
+              widget: "string",
+            }
+          - {
+              label: "offer_points_item2",
+              name: "offer_points_item_description2",
+              widget: "string",
+            }
+          - {
+              label: "offer_points_item3",
+              name: "offer_points_item_description3",
+              widget: "string",
+            }
+          - {
+              label: "offer_points_item4",
+              name: "offer_points_item4",
+              widget: "string",
+            }
+          - {
+              label: "offer_points_item_description4",
+              name: "offer_points_item_description4",
+              widget: "string",
+            }
+          - {
+              label: "offer_points_item5",
+              name: "offer_points_item5",
+              widget: "string",
+            }
+          - {
+              label: "offer_points_item_description5",
+              name: "offer_points_item_description5",
+              widget: "string",
+            }
+          - {
+              label: "offer_points_item6",
+              name: "offer_points_item6",
+              widget: "string",
+            }
+          - {
+              label: "offer_points_item_description6",
+              name: "offer_points_item_description6",
+              widget: "string",
+            }
+      - label: "Contact (English)"
+        name: "contact_en"
+        file: "src/i18n/translations/en/contact.json"
+        extension: "json"
+        fields:
+          - { label: "heading", name: "heading", widget: "string" }
+          - { label: "subtitle", name: "subtitle", widget: "string" }
+          - { label: "email_title", name: "email_title", widget: "string" }
+          - {
+              label: "features_heading1",
+              name: "features_heading1",
+              widget: "string",
+            }
+          - { label: "email_value", name: "email_value", widget: "string" }
+          - {
+              label: "features_title1",
+              name: "features_title1",
+              widget: "string",
+            }
+          - { label: "phone_title", name: "phone_title", widget: "string" }
+          - { label: "phone_value", name: "phone_value", widget: "string" }
+          - { label: "place_title", name: "place_title", widget: "string" }
+          - { label: "place_value", name: "place_value", widget: "string" }
+          - {
+              label: "work_days_title",
+              name: "work_days_title",
+              widget: "string",
+            }
+          - {
+              label: "work_days_value_open",
+              name: "work_days_value_open",
+              widget: "string",
+            }
+          - {
+              label: "work_days_value_closed",
+              name: "work_days_value_closed",
+              widget: "markdown",
+            }
+          - { label: "form_title", name: "form_title", widget: "string" }
+          - { label: "label_name", name: "label_name", widget: "string" }
+          - { label: "label_email", name: "label_email", widget: "string" }
+          - { label: "label_message", name: "label_message", widget: "string" }
+          - { label: "form_send_cta", name: "form_send_cta", widget: "string" }
+      - label: "Products (English)"
+        name: "products_en"
+        file: "src/i18n/translations/en/products.json"
+        extension: "json"
+        fields:
+          - { label: "heading", name: "heading", widget: "string" }
+          - { label: "ask_for_more", name: "ask_for_more", widget: "string" }
+      - label: "News (English)"
+        name: "news_en"
+        file: "src/i18n/translations/en/news.json"
+        extension: "json"
+        fields:
+          - { label: "heading", name: "heading", widget: "string" }
+          - { label: "read_more_cta", name: "read_more_cta", widget: "string" }
+      - label: "Shared (English)"
+        name: "shared_en"
+        file: "src/i18n/translations/en/shared.json"
+        extension: "json"
+        fields:
+          - { label: "nav_link0", name: "nav_link0", widget: "string" }
+          - { label: "nav_link1", name: "nav_link1", widget: "string" }
+          - {
+              label: "nav_link1_submenu_title1",
+              name: "nav_link1_submenu_title1",
+              widget: "string",
+            }
+          - {
+              label: "nav_link1_submenu_title1_item2",
+              name: "nav_link1_submenu_title1_item2",
+              widget: "string",
+            }
+          - {
+              label: "nav_link1_submenu_title2",
+              name: "nav_link1_submenu_title2",
+              widget: "string",
+            }
+          - {
+              label: "nav_link1_submenu_title2_item1",
+              name: "nav_link1_submenu_title2_item1",
+              widget: "string",
+            }
+          - {
+              label: "nav_link1_submenu_title2_item2",
+              name: "nav_link1_submenu_title2_item2",
+              widget: "string",
+            }
+          - {
+              label: "nav_link1_submenu_title2_item3",
+              name: "nav_link1_submenu_title2_item3",
+              widget: "string",
+            }
+          - { label: "nav_link2", name: "nav_link2", widget: "string" }
+          - { label: "nav_link3", name: "nav_link3", widget: "string" }
+          - { label: "nav_link4", name: "nav_link4", widget: "string" }
+          - { label: "nav_link5", name: "nav_link5", widget: "string" }
+          - {
+              label: "footer_cta_contact",
+              name: "footer_cta_contact",
+              widget: "string",
+            }
+          - { label: "footer_terms", name: "footer_terms", widget: "string" }
+          - {
+              label: "footer_cookies",
+              name: "footer_cookies",
+              widget: "string",
+            }
+      - label: "Legal (English)"
+        name: "legal_en"
+        file: "src/i18n/translations/en/legal.json"
+        extension: "json"
+        fields:
+          - { label: "heading", name: "heading", widget: "string" }
+          - { label: "body_html", name: "body_html", widget: "markdown" }
+      - label: "TechInfo (English)"
+        name: "techInfo_en"
+        file: "src/i18n/translations/en/technicalInfo.json"
+        extension: "json"
+        fields:
+          - { label: "heading", name: "heading", widget: "string" }
+          - { label: "subHeading", name: "subHeading", widget: "string" }
+          - { label: "message", name: "message", widget: "string" }
