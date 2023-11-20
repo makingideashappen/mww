@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "@reach/router";
 import styled, { css } from "styled-components";
 import { useTranslation } from "react-i18next";
 import Link from "../shared/link";
