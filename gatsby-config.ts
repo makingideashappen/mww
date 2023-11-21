@@ -12,8 +12,9 @@ const config: GatsbyConfig = {
   plugins: [{
     resolve: 'gatsby-source-sanity',
     options: {
-      "projectId": "z8x15pky",
-      "dataset": "production"
+      "projectId": process.env.SANITY_PROJECT_ID,
+      "dataset": process.env.SANITY_PROJECT_DATASET,
+      "token": process.env.SANITY_READ_TOKEN
     }
   }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-postcss", 
   // "gatsby-plugin-google-gtag",
